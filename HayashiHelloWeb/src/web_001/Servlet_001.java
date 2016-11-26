@@ -43,7 +43,7 @@ public class Servlet_001 extends HttpServlet {
       //•¶š—ñ‚ğo—Í‚·‚é
       //param1‚Ì•¶š—ñ‚ğparam2‚Ì‰ñ”•ªŒJ‚è•Ô‚µ•\¦‚·‚é
       for (int i = 0 ; i < p2 ; i++ ){
-        System.out.println(param1);
+        System.out.println();
       }
 	}
 
