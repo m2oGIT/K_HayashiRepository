@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Servlet_001
+ * Servlet implementation class Servlet_002
  */
-@WebServlet("/Servlet_001")
-public class Servlet_001 extends HttpServlet {
+@WebServlet("/Servlet_002")
+public class Servlet_002 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet_001() {
+    public Servlet_002() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,24 +39,25 @@ public class Servlet_001 extends HttpServlet {
       //文字列を出力する
       pw.println("<html>");
       pw.println("<head>");
-      pw.println("<title>web_001</title>");
+      pw.println("<title>web_002</title>");
       pw.println("</head>");
       pw.println("<body>");
 
-      //View_001.htmlからの値を取得して表示する
+      //View_002.htmlからの値を取得して、カンマごとに分割する
       String paramStr1 = request.getParameter("paramStr1");
-      String paramStr2 = request.getParameter("paramStr2");
+      String[] heightStr = paramStr1.split(",", 0);
 
-      //文字列から数値変換する
-      int p2 = Integer.parseInt(paramStr2);
-
-      //param1の文字列をparam2の回数分繰り返し表示する
-      for (int i = 0 ; i < p2 ; i++ ){
-        pw.print(paramStr1);
+      //身長から標準体重を算出する
+      for(int i = 0 ; i < heightStr.length ; i++ ){
+        int heightNum = Integer.parseInt(heightStr[i]);
+        double weight = (heightNum - 100) * 0.9;
+        pw.printf("%.5f", weight);
+        pw.println("<br>");
+        System.out.printf("身長：" + heightNum + " 体重：" + "%.5f",weight);
+        System.out.println();
       }
-      pw.println("</body>");
-      pw.println("</html>");
 
+      pw.println("</body>");
 	}
 
 	/**
@@ -64,7 +65,7 @@ public class Servlet_001 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	  //doGetメソッドに処理を委譲する
+	//doGetメソッドに処理を委譲する
       this.doGet(request, response);
 	}
 
